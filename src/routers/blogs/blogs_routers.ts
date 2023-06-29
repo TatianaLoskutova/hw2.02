@@ -6,7 +6,7 @@ import {blogQueryRepository} from '../../repositories/blogs/blogs_query_reposito
 import {GetByIdParam} from '../../models/getById';
 import {PostQueryModel} from '../../models/post/postQueryModel';
 import {postsQueryRepository} from '../../repositories/posts/posts_query_repository';
-import {authorizationValidation} from '../../middlewares/authorization_validation/authorization_validation';
+import {authorizationValidationВasic} from '../../middlewares/authorization_validation/authorization_validation';
 import {blogDescriptionValidation, blogNameValidation,blogWebsiteUrlValidation} from '../../middlewares/blogs_validation/blogs_validators';
 import {errorsValidation} from '../../middlewares/errors_reply/errors_validation';
 import {BlogInputModel} from '../../models/blog/blogInputModel';
@@ -17,6 +17,7 @@ import {postsService} from '../../domain/posts/posts_service';
 
 export const blogsRouters = Router()
 
+// ничего менять не нужно
 blogsRouters.get('/', async (req: RequestWithQuery<BlogQueryModel>, res: Response) => {
     const allBlogs = await blogQueryRepository.getAllBlogs(
         req.query.searchNameTerm,
@@ -30,6 +31,7 @@ blogsRouters.get('/', async (req: RequestWithQuery<BlogQueryModel>, res: Respons
     }
 })
 
+// менять не нужно
 blogsRouters.get('/:id', async (req:RequestWithParams<GetByIdParam>, res: Response) => {
     const result = await blogQueryRepository.findBlogById(new ObjectId(req.params.id))
     if (!result) {
@@ -39,6 +41,7 @@ blogsRouters.get('/:id', async (req:RequestWithParams<GetByIdParam>, res: Respon
     res.status(200).send(result)
 })
 
+// менять не нужно
 blogsRouters.get('/:id/posts', async (req: RequestWithParamsAndQuery<GetByIdParam,PostQueryModel>, res: Response) => {
     const result = await blogQueryRepository.findBlogById(new ObjectId(req.params.id))
     if (!result) {
@@ -55,8 +58,9 @@ blogsRouters.get('/:id/posts', async (req: RequestWithParamsAndQuery<GetByIdPara
     res.status(200).send(foundedPostByBlogId)
 })
 
+// Менять не нужно
 blogsRouters.post('/',
-    authorizationValidation,
+    authorizationValidationВasic,
     blogNameValidation,
     blogDescriptionValidation,
     blogWebsiteUrlValidation,
@@ -68,8 +72,9 @@ blogsRouters.post('/',
     }
 })
 
+// Менять не нужно
 blogsRouters.post('/:id/posts',
-    authorizationValidation,
+    authorizationValidationВasic,
     postTitleValidation,
     postShortDescription,
     postContentValidation,
@@ -85,8 +90,9 @@ blogsRouters.post('/:id/posts',
 
     })
 
+// менять не нужно
 blogsRouters.put('/:id',
-    authorizationValidation,
+    authorizationValidationВasic,
     blogNameValidation,
     blogDescriptionValidation,
     blogWebsiteUrlValidation,
@@ -100,9 +106,9 @@ blogsRouters.put('/:id',
         }
     })
 
-
+// менять не нужно
 blogsRouters.delete('/:id',
-    authorizationValidation,
+    authorizationValidationВasic,
     async (req: RequestWithParams<GetByIdParam>, res: Response) => {
         const isDeleted = await blogsService.deleteBlogById(req.params.id)
         if (isDeleted) {

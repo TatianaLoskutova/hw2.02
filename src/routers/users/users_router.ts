@@ -3,7 +3,7 @@ import {RequestWithBody, RequestWithParams, RequestWithQuery} from '../../types/
 import {UserQueryModel} from '../../models/users/userQueryModel';
 import {usersQueryRepository} from '../../repositories/users/users_query_repository';
 import {emailValidation, loginValidation, passwordValidation} from '../../middlewares/users_validation/users_validation';
-import {authorizationValidation} from '../../middlewares/authorization_validation/authorization_validation';
+import {authorizationValidationВasic} from '../../middlewares/authorization_validation/authorization_validation';
 import {errorsValidation} from '../../middlewares/errors_reply/errors_validation';
 import {UserInputModel} from '../../models/users/userInputModel';
 import {usersService} from '../../domain/users/users_service';
@@ -33,7 +33,7 @@ usersRouter.post('/',
     loginValidation,
     passwordValidation,
     emailValidation,
-    authorizationValidation,
+    authorizationValidationВasic,
     errorsValidation,
     async (req: RequestWithBody<UserInputModel>, res: Response) => {
     const newUser = await usersService.createUser(req.body)
@@ -45,7 +45,7 @@ usersRouter.post('/',
 })
 
 usersRouter.delete('/:id',
-    authorizationValidation,
+    authorizationValidationВasic,
     errorsValidation,
     async (req: RequestWithParams<GetByIdParam>, res: Response) => {
         const isDeleted = await usersService.deleteUserById(req.params.id)
