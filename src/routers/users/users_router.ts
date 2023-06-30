@@ -12,6 +12,7 @@ import {GetByIdParam} from '../../models/getById';
 
 export const usersRouter = Router()
 
+// менять не нужно
 usersRouter.get('/', async (req: RequestWithQuery<UserQueryModel>, res: Response) => {
     const allUsers = await usersQueryRepository.getAllUsers(
         req.query.sortBy,
@@ -29,6 +30,7 @@ usersRouter.get('/', async (req: RequestWithQuery<UserQueryModel>, res: Response
     }
 })
 
+// менять не нужно
 usersRouter.post('/',
     loginValidation,
     passwordValidation,
@@ -44,6 +46,7 @@ usersRouter.post('/',
     }
 })
 
+// менять не нужно
 usersRouter.delete('/:id',
     authorizationValidationВasic,
     errorsValidation,

@@ -1,5 +1,6 @@
 import {ObjectId} from 'mongodb'
 import {Request} from 'express';
+import {LoginInputModel} from '../models/auth/loginInputModel';
 
 export type BlogMongoDbType = {
     _id: ObjectId
@@ -28,6 +29,7 @@ export type UserDbType = {
     passwordSalt: string
     createdAt: string
 }
+
 
 export type RequestWithBody<T> = Request<{},{},T>
 export type RequestWithQuery<T> = Request<{},{},{},T>

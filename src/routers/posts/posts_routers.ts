@@ -14,6 +14,8 @@ import {postsService} from '../../domain/posts/posts_service';
 
 export const postsRouters = Router()
 
+
+// Ниже все менять не нужно
 postsRouters.get('/', async (req: RequestWithQuery<PostQueryModel>, res: Response) => {
     const allPosts = await postsQueryRepository.getAllPosts(
         req.query.pageNumber,
