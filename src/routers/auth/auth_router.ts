@@ -5,10 +5,7 @@ import {RequestWithBody} from '../../types/types';
 import {LoginInputModel} from '../../models/auth/loginInputModel';
 import {usersService} from '../../domain/users/users_service';
 import {jwtService} from '../../application/jwt_service';
-import {authValidationBearer} from '../../middlewares/authorization_validation/auth_validation_bearer';
-import {usersQueryRepository} from '../../repositories/users/users_query_repository';
-import {ObjectId} from 'mongodb';
-import {MeViewModel} from '../../models/auth/meViewModel';
+
 
 
 export const authRouter = Router()
