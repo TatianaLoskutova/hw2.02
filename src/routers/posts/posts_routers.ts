@@ -5,7 +5,7 @@ import {PostQueryModel} from '../../models/post/postQueryModel';
 import {postsQueryRepository} from '../../repositories/posts/posts_query_repository';
 import {errorsValidation} from '../../middlewares/errors_reply/errors_validation';
 import {GetByIdParam} from '../../models/getById';
-import {authorizationValidationВasic} from '../../middlewares/authorization_validation/authorization_validation';
+import {authorizationValidationВasic} from '../../middlewares/authorization_validation/authorization_validation_basic';
 import {postBlogIdValidation, postContentValidation, postShortDescription, postTitleValidation} from '../../middlewares/posts_validation/posts_validators';
 import {PostInputModel} from '../../models/post/postInputModel';
 import {postsService} from '../../domain/posts/posts_service';

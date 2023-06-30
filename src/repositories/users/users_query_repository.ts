@@ -3,6 +3,7 @@ import {PaginatorUserViewModel} from '../../models/users/userViewModelWithPagina
 import {usersCollection} from '../../db/db';
 import {makeUserMapping, makeUserPagination} from '../../helpers/functions';
 import {UserViewModel} from '../../models/users/userViewModel';
+import {MeViewModel} from '../../models/auth/meViewModel';
 
 
 
@@ -59,6 +60,20 @@ export const usersQueryRepository = {
             email: foundedUser.email,
             createdAt: foundedUser.createdAt
         }
+    },
+
+    async findCurrentUser (_id: ObjectId): Promise<MeViewModel | null> {
+        const foundedCurrentUser = await usersCollection.findOne({_id})
+
+        if (!foundedCurrentUser) {
+            return null
+        }
+        return {
+            login: foundedCurrentUser.login,
+            email: foundedCurrentUser.email,
+            userId: foundedCurrentUser._id.toString(),
+        }
     }
+
 }
 

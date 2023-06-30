@@ -5,6 +5,10 @@ import {RequestWithBody} from '../../types/types';
 import {LoginInputModel} from '../../models/auth/loginInputModel';
 import {usersService} from '../../domain/users/users_service';
 import {jwtService} from '../../application/jwt_service';
+import {authValidationBearer} from '../../middlewares/authorization_validation/auth_validation_bearer';
+import {usersQueryRepository} from '../../repositories/users/users_query_repository';
+import {ObjectId} from 'mongodb';
+import {MeViewModel} from '../../models/auth/meViewModel';
 
 
 export const authRouter = Router()
@@ -24,7 +28,8 @@ authRouter.post('/login',
         res.status(200).send(token)
 })
 
-// Написать GET запрос
-// authRouter.get('/me', async (req: Request, res: Response) => {
-//
+// authRouter.get('/me',
+//     authValidationBearer,
+//     async (req: Request, res: Response) => {
+//     const currentUser = req.user
 // })

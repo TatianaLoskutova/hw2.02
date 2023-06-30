@@ -2,6 +2,7 @@ import jwt, { sign } from 'jsonwebtoken';
 import {setting} from '../settings';
 import {LoginSuccessViewModel} from '../models/auth/loginSuccessViewModel';
 import {UserDbType} from '../types/types';
+import {ObjectId} from 'mongodb';
 
 export const jwtService = {
     async createJWT(user: UserDbType): Promise<LoginSuccessViewModel> {
@@ -9,5 +10,14 @@ export const jwtService = {
         return {
             accessToken: token
             }
+            // или просто return token? проверить
+    },
+    async getUserIdByToken(token: string) {
+        try {
+            const result: any = jwt.verify(token, setting.JWT_SECRET)
+            return new ObjectId(result.userId)
+        } catch (error) {
+            return null
+        }
     }
 }

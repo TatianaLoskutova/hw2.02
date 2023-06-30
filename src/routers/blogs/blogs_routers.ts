@@ -6,7 +6,6 @@ import {blogQueryRepository} from '../../repositories/blogs/blogs_query_reposito
 import {GetByIdParam} from '../../models/getById';
 import {PostQueryModel} from '../../models/post/postQueryModel';
 import {postsQueryRepository} from '../../repositories/posts/posts_query_repository';
-import {authorizationValidationВasic} from '../../middlewares/authorization_validation/authorization_validation';
 import {blogDescriptionValidation, blogNameValidation,blogWebsiteUrlValidation} from '../../middlewares/blogs_validation/blogs_validators';
 import {errorsValidation} from '../../middlewares/errors_reply/errors_validation';
 import {BlogInputModel} from '../../models/blog/blogInputModel';
@@ -14,6 +13,7 @@ import {blogsService} from '../../domain/blogs/blogs_service';
 import {postContentValidation, postShortDescription, postTitleValidation} from '../../middlewares/posts_validation/posts_validators';
 import {PostInputModel} from '../../models/post/postInputModel';
 import {postsService} from '../../domain/posts/posts_service';
+import {authorizationValidationВasic} from '../../middlewares/authorization_validation/authorization_validation_basic';
 
 export const blogsRouters = Router()
 

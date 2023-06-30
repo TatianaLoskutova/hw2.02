@@ -3,7 +3,7 @@ import {RequestWithBody, RequestWithParams, RequestWithQuery} from '../../types/
 import {UserQueryModel} from '../../models/users/userQueryModel';
 import {usersQueryRepository} from '../../repositories/users/users_query_repository';
 import {emailValidation, loginValidation, passwordValidation} from '../../middlewares/users_validation/users_validation';
-import {authorizationValidationВasic} from '../../middlewares/authorization_validation/authorization_validation';
+import {authorizationValidationВasic} from '../../middlewares/authorization_validation/authorization_validation_basic';
 import {errorsValidation} from '../../middlewares/errors_reply/errors_validation';
 import {UserInputModel} from '../../models/users/userInputModel';
 import {usersService} from '../../domain/users/users_service';
